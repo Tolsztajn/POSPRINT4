@@ -10,22 +10,6 @@ class Usuario {
   private $password;
   private $db;
 
-<<<<<<< HEAD
-  function _construct($name, $surname, $telefono, $mail,$password){
-
-   $this->name = $name;
-   $this->surname = $surname;
-   $this->telefono = $telefono;
-   $this->mail = $mail;
-   $this->password = $this->setPassword($password);
-
-   $this->db = new PDO("mysql:host=localhost;dbname=usuario_test","root","root");
-   $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-}
-
-  public function setPassword($value){
-=======
 public function __construct($datos) {
     if (isset($datos["name"])) {
       $this->name = $datos["name"];
@@ -34,7 +18,6 @@ public function __construct($datos) {
     else {
       $this->password = password_hash($datos["password"], PASSWORD_DEFAULT);
     }
->>>>>>> bace41c5d14c2b522bdaba81d27ca6895999da41
 
     $this->surname = $datos["surname"];
     $this->telefono = $datos["telefono"];
@@ -179,7 +162,6 @@ public function __construct($datos) {
     public function setDb($db)
     {
         $this->db = $db;
-
         return $this;
     }
 

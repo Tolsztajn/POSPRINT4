@@ -2,7 +2,7 @@
 
 
 class Usuario {
-
+  private $id;
   private $name;
   private $surname;
   private $telefono;
@@ -162,6 +162,18 @@ public function __construct($datos) {
     public function setDb($db)
     {
         $this->db = $db;
+        return $this;
+    }
+
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
         return $this;
     }
 

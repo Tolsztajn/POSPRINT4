@@ -89,9 +89,9 @@ public function __construct($datos) {
      *
      * @return mixed
      */
-    public function getTelefno()
+    public function getTelefono()
     {
-        return $this->telefno;
+        return $this->telefono;
     }
 
     /**
@@ -101,9 +101,9 @@ public function __construct($datos) {
      *
      * @return self
      */
-    public function setTelefno($telefno)
+    public function setTelefono($telefono)
     {
-        $this->telefno = $telefno;
+        $this->telefono = $telefono;
 
         return $this;
     }
@@ -162,7 +162,6 @@ public function __construct($datos) {
     public function setDb($db)
     {
         $this->db = $db;
-
         return $this;
     }
 

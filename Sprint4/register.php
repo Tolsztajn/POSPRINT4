@@ -1,6 +1,8 @@
 <?php
+
 include_once("soporte.php");
 require_once("clases/usuario.php");
+
 
 if ($auth->estaLogueado()) {
   header("Location:inicio.php");exit;
@@ -49,23 +51,25 @@ include("header.php");
     <div class="contenedor"> <!-- Contenedor principal -->
           <main>
 
-
-          <ul class="errores">
+                  <div class="alert alert-danger">
+                  <ul class="errores">
               		<?php foreach ($errores as $error) : ?>
               			<li>
               				<?=$error?>
               			</li>
               		<?php endforeach; ?>
                 </ul>
-
+                </div>
 
 
           <form class="registro" action="register.php" method="POST" enctype="multipart/form-data">
           <!--Datos registro-->
+
           <input type="text" class="form-control" placeholder="Nombre" name="name" id="name" value="<?=$nameDefault?>"><br>
           <input type="text" class="form-control" placeholder="Apellido" name="surname" id="surname" value="<?=$surnameDefault?>"><br>
           <input type="text" class="form-control" placeholder="Telefono" name="telefono" id="telefono" value="<?=$telefonoDefault?>"><br>
           <input type="text"class="form-control" placeholder="Mail" name="mail" id="mail" value="<?=$mailDefault?>"><br>
+
           <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" value=""><br>
 
            <!-- DIA DE NACIMIENTO-->

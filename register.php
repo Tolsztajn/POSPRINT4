@@ -7,17 +7,13 @@
 		header("Location:inicio.php");exit;
 	}
 
+
 	$emailDefault = "";
 	$edadDefault = "";
 	$usernameDefault = "";
 	$telefonoDefault = "";
 
-	$paises = [
-		"Ar" => "Argentina",
-		"Br" => "Brasil",
-		"Co" => "Colombia",
-		"Fr" => "Francia"
-	];
+
 
 	$errores = [];
 	if ($_POST) {
@@ -83,15 +79,7 @@
 				<label for="edad">Edad</label>
 				<input class="form-control" type="text" name="edad" id="edad" value="<?=$edadDefault?>">
 			</div>
-			<div class="form-group">
-				<label for="pais">Pais:</label>
-				<select id="pais" class="form-control" name="pais">
-					<?php foreach ($paises as $clave => $pais) : ?>
-						<?php if ($clave == $_POST["pais"]) : ?>
-							<option value="<?=$clave?>" selected>
-								<?=$pais?>
-							</option>
-						<?php else: ?>
+			<?php else: ?>
 							<option value="<?=$clave?>">
 								<?=$pais?>
 							</option>

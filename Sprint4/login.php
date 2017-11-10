@@ -36,7 +36,7 @@ include("header.php"); ?>
     </ul>
         </div>
 
-<form class="form" action="?pagina=login.controller" method="post">
+<form class="form" action="login.php" method="POST">
     <h2 class="login-title">LOGIN</h2>
     <div class="">
       <label for="" class="login-subtitle">Usuario</label>
@@ -44,7 +44,7 @@ include("header.php"); ?>
     </div>
     <div class="">
       <label for="" class="login-subtitle">Email</label>
-      <input type= "email" class="form-control" placeholder="Email" name="email">
+      <input type= "mail" class="form-control" placeholder="Mail" name="mail">
     </div>
     <div class="">
       <label class="login-subtitle">Contraseña</label>

@@ -22,12 +22,8 @@ if ($auth->estaLogueado()) {
 		}
 
 		if (!isset($errores["surname"])) {
-<<<<<<< HEAD
-			$surnaDefault = $_POST["surname"];
-=======
-			$surnameDefault = $_POST["surname"];
->>>>>>> ac9648a30f118e6a479d142cec32a18f8c78162a
-		}
+      $surnameDefault = $_POST["surname"];
+    }
 
 		if (!isset($errores["telefono"])) {
 			$telefonoDefault = $_POST["telefono"];
@@ -52,18 +48,16 @@ include("header.php");
 <body>
     <div class="contenedor"> <!-- Contenedor principal -->
           <main>
-<<<<<<< HEAD
-        <div class="alert alert-danger">
-=======
-                  <div class="alert alert-danger">
->>>>>>> ac9648a30f118e6a479d142cec32a18f8c78162a
-                  <ul class="errores">
+
+
+          <ul class="errores">
               		<?php foreach ($errores as $error) : ?>
               			<li>
               				<?=$error?>
               			</li>
               		<?php endforeach; ?>
-                </div>
+                </ul>
+
 
 
           <form class="registro" action="register.php" method="POST" enctype="multipart/form-data">

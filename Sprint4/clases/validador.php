@@ -40,11 +40,7 @@ class Validador {
 			$errores["password"] = "No llenaste completar contraseña";
 		}
 
-		if ($informacion["password"] != "" && $informacion["cpassword"] != "" && $informacion["password"] != $informacion["cpassword"]) {
-			$errores["password"] = "Las contraseñas no coinciden";
-		}
-
-    if ($_FILES["avatar"]["error"] != UPLOAD_ERR_OK)
+		if ($_FILES["avatar"]["error"] != UPLOAD_ERR_OK)
 		{
       $errores["avatar"] = "Hubo un error al cargar la imagen";
     } else {

@@ -1,16 +1,48 @@
-<?php include("header.php"); ?>
-
 <?php
-session_start();
-$name = $_SESSION["inputsValues"]["name"]?? "";
-$surname = $_SESSION["inputsValues"]["surname"]?? "";
-$telefono = $_SESSION["inputsValues"]["telefono"]?? "";
-$mail = $_SESSION["inputsValues"]["mail"]?? "";
+include_once("soporte.php");
+require_once("clases/usuario.php");
 
-if($_POST){
-  //ahora uso cosas del register controller
-
+if ($auth->estaLogueado()) {
+  header("Location:inicio.php");exit;
 }
+
+
+  $nameDefault = "";
+  $surnameDefault = "";
+  $telefonoDefault = "";
+  $mailDefault = "";
+
+
+  $errores = [];
+	if ($_POST) {
+		$errores = $validador->validarInformacion($_POST, $db);
+
+		if (!isset($errores["name"])) {
+			$emailDefault = $_POST["name"];
+		}
+
+		if (!isset($errores["surname"])) {
+			$edadDefault = $_POST["surname"];
+		}
+
+		if (!isset($errores["telefono"])) {
+			$usernameDefault = $_POST["telefono"];
+		}
+
+
+    if (count($errores) == 0) {
+			$usuario = new Usuario($_POST);
+			$mail = $_POST["email"];
+
+			$usuario->guardarImagen($mail);
+			$usuario = $db->guardarUsuario($usuario);
+
+			header("Location:perfilUsuario.php?mail=$mail");exit;
+		}
+	}
+
+
+include("header.php");
  ?>
 
 <body>
@@ -20,19 +52,20 @@ if($_POST){
 
 
                 <div class="alert alert-danger">
-                  <?php foreach ($_SESSION["errores"] as $value): ?>
-                    <p><?php echo $value; ?></p>
-                  <?php endforeach ?>
-                </div>
+                  <ul class="errores">
+              		<?php foreach ($errores as $error) : ?>
+              			<li>
+              				<?=$error?>
+              			</li>
+              		<?php endforeach; ?>
 
-              <?php endif ?>
-          <?php unset($_SESSION["errores"]) ?>
-          <form class="registro" action="php/registercontroller.php" method="post" enctype="multipart/form-data">
+
+          <form class="registro" action="register.php" method="POST" enctype="multipart/form-data">
           <!--Datos registro-->
-          <input type="text" class="form-control" placeholder="Nombre" name="name" id="name" value=""><br>
-          <input type="text" class="form-control" placeholder="Apellido" name="surname" id="surname" value=""><br>
-          <input type="text" class="form-control" placeholder="Telefono" name="telefono" id="telefono" value=""><br>
-          <input type="text"class="form-control" placeholder="Mail" name="mail" id="mail" value=""><br>
+          <input type="text" class="form-control" placeholder="Nombre" name="name" id="name" value="<?=$nameDefault?>"><br>
+          <input type="text" class="form-control" placeholder="Apellido" name="surname" id="surname" value="<?=$surnameDefault?>"><br>
+          <input type="text" class="form-control" placeholder="Telefono" name="telefono" id="telefono" value="<?=$telefonoDefault?>"><br>
+          <input type="text"class="form-control" placeholder="Mail" name="mail" id="mail" value="<?=$mailDefault?>"><br>
           <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" value=""><br>
 
            <!-- DIA DE NACIMIENTO-->

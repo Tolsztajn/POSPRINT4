@@ -2,10 +2,12 @@
 
 <?php
 session_start();
+
 $name = $_SESSION["inputsValues"]["name"]?? "";
 $surname = $_SESSION["inputsValues"]["surname"]?? "";
 $telefono = $_SESSION["inputsValues"]["telefono"]?? "";
 $mail = $_SESSION["inputsValues"]["mail"]?? "";
+$password = $_SESSION["inputsValues"]["password"]??"";
 
 if($_POST){
   //ahora uso cosas del register controller
@@ -29,6 +31,7 @@ if($_POST){
           <?php unset($_SESSION["errores"]) ?>
           <form class="registro" action="php/registercontroller.php" method="post" enctype="multipart/form-data">
           <!--Datos registro-->
+
           <input type="text" class="form-control" placeholder="Nombre" name="name" id="name" value=""><br>
           <input type="text" class="form-control" placeholder="Apellido" name="surname" id="surname" value=""><br>
           <input type="text" class="form-control" placeholder="Telefono" name="telefono" id="telefono" value=""><br>

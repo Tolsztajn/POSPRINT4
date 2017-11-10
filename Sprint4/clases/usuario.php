@@ -18,7 +18,7 @@ class Usuario {
    $this->mail = $mail;
    $this->password = $this->setPassword($password);
 
-   $this->db = new PDO("mysql:host=localhost;dbname=hoteles_db","root","root");
+   $this->db = new PDO("mysql:host=localhost;dbname=usuario_test","root","root");
    $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 }
@@ -98,9 +98,9 @@ class Usuario {
      *
      * @return mixed
      */
-    public function getTelefno()
+    public function getTelefono()
     {
-        return $this->telefno;
+        return $this->telefono;
     }
 
     /**
@@ -110,9 +110,9 @@ class Usuario {
      *
      * @return self
      */
-    public function setTelefno($telefno)
+    public function setTelefono($telefono)
     {
-        $this->telefno = $telefno;
+        $this->telefono = $telefono;
 
         return $this;
     }

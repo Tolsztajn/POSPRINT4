@@ -10,7 +10,7 @@ class DBMySQL extends DB {
     $dsn = 'mysql:host=localhost;dbname=hoteles_db;
     charset=utf8mb4;port=3306';
     $user ="root";
-    $pass = "root";
+    $pass = "";
 
     try {
       $this->db = new PDO($dsn, $user, $pass);

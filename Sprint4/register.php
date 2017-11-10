@@ -50,16 +50,17 @@ include("header.php");
 <body>
     <div class="contenedor"> <!-- Contenedor principal -->
           <main>
-
+                <?php if (count($errores)>0) { ?>
                   <div class="alert alert-danger">
-                  <ul class="errores">
-              		<?php foreach ($errores as $error) : ?>
-              			<li>
-              				<?=$error?>
-              			</li>
-              		<?php endforeach; ?>
+                      <ul class="errores">
+                  		<?php foreach ($errores as $error) : ?>
+                  			<li>
+                  				<?=$error?>
+                  			</li>
+                  		<?php endforeach; ?>
+                    </ul>
                 </div>
-
+              <?php } ?>
 
           <form class="registro" action="register.php" method="POST" enctype="multipart/form-data">
           <!--Datos registro-->

@@ -15,7 +15,7 @@
     <div class="contenedor"> <!-- Contenedor principal -->
       <header> <!-- Encabezado logo +  menu -->
         <div class="first-nav">
-          <a href="?pagina=home"><img src="img/logo-1.svg" alt="logo wt" class="logo1"></a>
+          <a href="inicio.php"><img src="img/logo-1.svg" alt="logo wt" class="logo1"></a>
           <img src="img/menu.svg" alt="" class="menu-button">
           <nav class="second-nav">
             <ul>
@@ -27,7 +27,7 @@
           </nav>
           <nav class="login">
             <ul>
-              <li><a href="?pagina=login">LOGIN</a></li>
+              <li><a href="login.php">LOGIN</a></li>
               <?php if (isset($_SESSION["usuario"])):?>
               <li><a href="#">¡Bienvenido <?php echo $_SESSION["usuario"]; ?>!</a></li>
             <?php endif?>

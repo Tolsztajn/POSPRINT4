@@ -10,7 +10,7 @@ class DBMySQL extends DB {
     $dsn = 'mysql:host=localhost;dbname=hoteles_db;
     charset=utf8mb4;port=3306';
     $user ="root";
-    $pass = "";
+    $pass = "root";
 
     try {
       $this->db = new PDO($dsn, $user, $pass);
@@ -22,13 +22,13 @@ class DBMySQL extends DB {
 
   public function guardarUsuario(Usuario $usuario) {
 
-		$query = $this->db->prepare("Insert into usuario_test values(default, :email, :password,:edad,:username,:pais)");
+    $query = $this->db->prepare("Insert into usuario_test values(default, :name, :surname,:telefono,:mail,:password)");
 
-		$query->bindValue(":email", $usuario->getEmail());
+		$query->bindValue(":name", $usuario->getName());
+		$query->bindValue(":surname", $usuario->getSurname());
+		$query->bindValue(":telefono", $usuario->getTelefono());
+		$query->bindValue(":mail", $usuario->getMail());
 		$query->bindValue(":password", $usuario->getPassword());
-		$query->bindValue(":edad", $usuario->getEdad());
-		$query->bindValue(":username", $usuario->getUsername());
-		$query->bindValue(":pais", $usuario->getPais());
     //agregar los requisitos que nos faltan
 
 		$id = $this->db->lastInsertId();
@@ -52,9 +52,9 @@ class DBMySQL extends DB {
 
     return $arrayFinal;
   }
-  public function traerPorMail($email) {
-		$query = $this->db->prepare("Select * from usuarios where email = :email");
-		$query->bindValue(":email", $email);
+  public function traerPorMail($mail) {
+		$query = $this->db->prepare("Select * from usuarios where mail = :mail");
+		$query->bindValue(":mail", $mail);
 
 		$query->execute();
 

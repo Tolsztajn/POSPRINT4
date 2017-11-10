@@ -5,11 +5,12 @@ class Usuario {
 
   private $name;
   private $surname;
-  private $telefno;
+  private $telefono;
   private $mail;
   private $password;
   private $db;
 
+<<<<<<< HEAD
   function _construct($name, $surname, $telefono, $mail,$password){
 
    $this->name = $name;
@@ -24,26 +25,33 @@ class Usuario {
 }
 
   public function setPassword($value){
+=======
+public function __construct($datos) {
+    if (isset($datos["name"])) {
+      $this->name = $datos["name"];
+      $this->password = $datos["password"];
+    }
+    else {
+      $this->password = password_hash($datos["password"], PASSWORD_DEFAULT);
+    }
+>>>>>>> bace41c5d14c2b522bdaba81d27ca6895999da41
 
-    $this->password = password_hash($value, PASSWORD_DEFAULT);
-
-  }
-
-  public function save(){
-
-    $sql = "INSERT INTO usuarios (name,surname,telefono,mail,password) VALUES (?,?,?,?,?)";
-    $stmt = $this->db->prepare($sql);
-    $stmt ->bindValue(":nombre", $this->nombre, PARAM::STR);
-    $stmt ->bindValue(":surname", $this->surname, PARAM::STR);
-    $stmt ->bindValue(":telefono", $this->telefono, PARAM::INT);
-    $stmt ->bindValue(":mail", $this->mail, PARAM::STR);
-    $stmt ->bindValue(":password", $this->password, PARAM::STR);
-    $stmt->execute();
-
+    $this->surname = $datos["surname"];
+    $this->telefono = $datos["telefono"];
+    $this->mail = $datos["mail"];
 
   }
 
+  public function guardarImagen() {
+    $nombre=$_FILES["avatar"]["name"];
+    $archivo=$_FILES["avatar"]["tmp_name"];
 
+    $ext = pathinfo($nombre, PATHINFO_EXTENSION);
+
+    $miArchivo = "img/" . $this->getMail() . "." . $ext;
+
+    move_uploaded_file($archivo, $miArchivo);
+  }
 
     /**
      * Get the value of Name

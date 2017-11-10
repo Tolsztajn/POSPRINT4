@@ -1,6 +1,5 @@
-<?php include("header.php"); ?>
-
 <?php
+<<<<<<< HEAD
 session_start();
 
 $name = $_SESSION["inputsValues"]["name"]?? "";
@@ -11,31 +10,89 @@ $password = $_SESSION["inputsValues"]["password"]??"";
 
 if($_POST){
   //ahora uso cosas del register controller
+=======
+include_once("soporte.php");
+require_once("clases/usuario.php");
+>>>>>>> bace41c5d14c2b522bdaba81d27ca6895999da41
 
+if ($auth->estaLogueado()) {
+  header("Location:inicio.php");exit;
 }
+
+
+  $nameDefault = "";
+  $surnameDefault = "";
+  $telefonoDefault = "";
+  $mailDefault = "";
+
+
+  $errores = [];
+	if ($_POST) {
+		$errores = $validador->validarInformacion($_POST, $db);
+
+		if (!isset($errores["name"])) {
+			$nameDefault = $_POST["name"];
+		}
+
+		if (!isset($errores["surname"])) {
+<<<<<<< HEAD
+			$surnaDefault = $_POST["surname"];
+=======
+			$surnameDefault = $_POST["surname"];
+>>>>>>> ac9648a30f118e6a479d142cec32a18f8c78162a
+		}
+
+		if (!isset($errores["telefono"])) {
+			$telefonoDefault = $_POST["telefono"];
+		}
+
+
+    if (count($errores) == 0) {
+			$usuario = new Usuario($_POST);
+			$mail = $_POST["mail"];
+
+			$usuario->guardarImagen($mail);
+			$usuario = $db->guardarUsuario($usuario);
+
+			header("Location:perfilUsuario.php?mail=$mail");exit;
+		}
+	}
+
+
+include("header.php");
  ?>
 
 <body>
     <div class="contenedor"> <!-- Contenedor principal -->
           <main>
-          <?php if (!empty($_SESSION["errores"])): ?>
-
-
-                <div class="alert alert-danger">
-                  <?php foreach ($_SESSION["errores"] as $value): ?>
-                    <p><?php echo $value; ?></p>
-                  <?php endforeach ?>
+<<<<<<< HEAD
+        <div class="alert alert-danger">
+=======
+                  <div class="alert alert-danger">
+>>>>>>> ac9648a30f118e6a479d142cec32a18f8c78162a
+                  <ul class="errores">
+              		<?php foreach ($errores as $error) : ?>
+              			<li>
+              				<?=$error?>
+              			</li>
+              		<?php endforeach; ?>
                 </div>
 
-              <?php endif ?>
-          <?php unset($_SESSION["errores"]) ?>
-          <form class="registro" action="php/registercontroller.php" method="post" enctype="multipart/form-data">
+
+          <form class="registro" action="register.php" method="POST" enctype="multipart/form-data">
           <!--Datos registro-->
+<<<<<<< HEAD
 
           <input type="text" class="form-control" placeholder="Nombre" name="name" id="name" value=""><br>
           <input type="text" class="form-control" placeholder="Apellido" name="surname" id="surname" value=""><br>
           <input type="text" class="form-control" placeholder="Telefono" name="telefono" id="telefono" value=""><br>
           <input type="text"class="form-control" placeholder="Mail" name="mail" id="mail" value=""><br>
+=======
+          <input type="text" class="form-control" placeholder="Nombre" name="name" id="name" value="<?=$nameDefault?>"><br>
+          <input type="text" class="form-control" placeholder="Apellido" name="surname" id="surname" value="<?=$surnameDefault?>"><br>
+          <input type="text" class="form-control" placeholder="Telefono" name="telefono" id="telefono" value="<?=$telefonoDefault?>"><br>
+          <input type="text"class="form-control" placeholder="Mail" name="mail" id="mail" value="<?=$mailDefault?>"><br>
+>>>>>>> bace41c5d14c2b522bdaba81d27ca6895999da41
           <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" value=""><br>
 
            <!-- DIA DE NACIMIENTO-->

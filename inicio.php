@@ -9,7 +9,7 @@
 			$nombre = $usuarioLogueado->getUsername();
 		}
 
-		$productos = ["VideoCasetera", "Walkman", "Discman", "Gameboy"];
+		$productos = ["Hoteles", "Departamentos", "Casas", "Hostels"];
 
 		$usuarios = $db->traerTodos();
 

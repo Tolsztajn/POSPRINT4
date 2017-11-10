@@ -24,8 +24,8 @@ if ($auth->estaLogueado()) {
 		}
 
 		if (!isset($errores["surname"])) {
-			$surnameDefault = $_POST["surname"];
-		}
+      $surnameDefault = $_POST["surname"];
+    }
 
 		if (!isset($errores["telefono"])) {
 			$telefonoDefault = $_POST["telefono"];

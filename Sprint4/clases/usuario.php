@@ -31,7 +31,7 @@ public function __construct($datos) {
 
     $ext = pathinfo($nombre, PATHINFO_EXTENSION);
 
-    $miArchivo = "img/" . $this->getEmail() . "." . $ext;
+    $miArchivo = "img/" . $this->getMail() . "." . $ext;
 
     move_uploaded_file($archivo, $miArchivo);
   }

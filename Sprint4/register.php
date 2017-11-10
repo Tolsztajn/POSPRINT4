@@ -22,7 +22,7 @@ if ($auth->estaLogueado()) {
 		}
 
 		if (!isset($errores["surname"])) {
-			$edadDefault = $_POST["surname"];
+			$surnameDefault = $_POST["surname"];
 		}
 
 		if (!isset($errores["telefono"])) {
@@ -48,10 +48,7 @@ include("header.php");
 <body>
     <div class="contenedor"> <!-- Contenedor principal -->
           <main>
-          <?php if (!empty($_SESSION["errores"])): ?>
-
-
-                <div class="alert alert-danger">
+                  <div class="alert alert-danger">
                   <ul class="errores">
               		<?php foreach ($errores as $error) : ?>
               			<li>

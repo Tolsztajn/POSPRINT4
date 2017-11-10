@@ -1,20 +1,42 @@
-<?php include("header.php"); ?>
+<?php
+
+include_once("soporte.php");
+
+if ($auth->estaLogueado()) {
+  header("Location:inicio.php");exit;
+}
+
+$errores = [];
+if ($_POST) {
+  $errores = $validador->validarLogin($_POST, $db);
+  if (count($errores) == 0) {
+    // LOGUEAR
+    $auth->loguear($_POST["mail"]);
+    if (isset($_POST["recordame"])) {
+      //Quiere que lo recuerde
+      $auth->recordame($_POST["mail"]);
+    }
+    header("Location:inicio.php");
+  }
+}
+
+include("header.php"); ?>
 
 <body>
 <div class="form">
 <header> <!-- Encabezado logo + menu -->
-  <?php if (!empty($_SESSION["errores"])): ?>
 
-
-        <div class="alert alert-danger">
-          <?php foreach ($_SESSION["errores"] as $value): ?>
-            <p><?php echo $value; ?></p>
-          <?php endforeach ?>
+  <div class="alert alert-danger">
+    <ul class="errores">
+    <?php foreach ($errores as $error) : ?>
+      <li>
+        <?=$error?>
+      </li>
+    <?php endforeach; ?>
+    </ul>
         </div>
 
-      <?php endif ?>
-  <?php unset($_SESSION["errores"]) ?>
-  <form class="form" action="?pagina=login.controller" method="post">
+<form class="form" action="?pagina=login.controller" method="post">
     <h2 class="login-title">LOGIN</h2>
     <div class="">
       <label for="" class="login-subtitle">Usuario</label>

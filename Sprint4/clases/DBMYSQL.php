@@ -22,9 +22,9 @@ class DBMySQL extends DB {
 
   public function guardarUsuario(Usuario $usuario) {
 
-    $query = $this->db->prepare("Insert into usuario_test values(default, :nombre, :surname,:telefono,:mail,:password)");
+    $query = $this->db->prepare("Insert into usuario_test values(default, :name, :surname,:telefono,:mail,:password)");
 
-		$query->bindValue(":nombre", $usuario->getNombre());
+		$query->bindValue(":name", $usuario->getName());
 		$query->bindValue(":surname", $usuario->getSurname());
 		$query->bindValue(":telefono", $usuario->getTelefono());
 		$query->bindValue(":mail", $usuario->getMail());

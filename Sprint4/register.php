@@ -18,21 +18,21 @@ if ($auth->estaLogueado()) {
 		$errores = $validador->validarInformacion($_POST, $db);
 
 		if (!isset($errores["name"])) {
-			$emailDefault = $_POST["name"];
+			$nameDefault = $_POST["name"];
 		}
 
 		if (!isset($errores["surname"])) {
-			$edadDefault = $_POST["surname"];
+			$surnaDefault = $_POST["surname"];
 		}
 
 		if (!isset($errores["telefono"])) {
-			$usernameDefault = $_POST["telefono"];
+			$telefonoDefault = $_POST["telefono"];
 		}
 
 
     if (count($errores) == 0) {
 			$usuario = new Usuario($_POST);
-			$mail = $_POST["email"];
+			$mail = $_POST["mail"];
 
 			$usuario->guardarImagen($mail);
 			$usuario = $db->guardarUsuario($usuario);
@@ -48,16 +48,14 @@ include("header.php");
 <body>
     <div class="contenedor"> <!-- Contenedor principal -->
           <main>
-          <?php if (!empty($_SESSION["errores"])): ?>
-
-
-                <div class="alert alert-danger">
+        <div class="alert alert-danger">
                   <ul class="errores">
               		<?php foreach ($errores as $error) : ?>
               			<li>
               				<?=$error?>
               			</li>
               		<?php endforeach; ?>
+                </div>
 
 
           <form class="registro" action="register.php" method="POST" enctype="multipart/form-data">

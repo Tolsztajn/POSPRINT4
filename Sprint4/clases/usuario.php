@@ -19,10 +19,10 @@ public function __construct($datos) {
       $this->password = password_hash($datos["password"], PASSWORD_DEFAULT);
     }
 
-    $this->surname = $datos["surname"]
+    $this->surname = $datos["surname"];
     $this->telefono = $datos["telefono"];
     $this->mail = $datos["mail"];
-    $this->telefono = $datos["telefono"];
+
   }
 
   public function guardarImagen() {

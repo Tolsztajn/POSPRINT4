@@ -12,7 +12,7 @@ class DBJSON extends DB {
   public function traerTodos() {
 
   }
-  public function traerPorMail($email) {
+  public function traerPorMail($mail) {
 
   }
 }

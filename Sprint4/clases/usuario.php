@@ -5,45 +5,36 @@ class Usuario {
 
   private $name;
   private $surname;
-  private $telefno;
+  private $telefono;
   private $mail;
   private $password;
   private $db;
 
-  function _construct($name, $surname, $telefono, $mail,$password){
+public function __construct($datos) {
+    if (isset($datos["name"])) {
+      $this->name = $datos["name"];
+      $this->password = $datos["password"];
+    }
+    else {
+      $this->password = password_hash($datos["password"], PASSWORD_DEFAULT);
+    }
 
-   $this->name = $name;
-   $this->surname = $surname;
-   $this->telefono = $telefono;
-   $this->mail = $mail;
-   $this->password = $this->setPassword($password);
-
-   $this->db = new PDO("mysql:host=localhost;dbname=hoteles_db","root","root");
-   $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-}
-
-  public function setPassword($value){
-
-    $this->password = password_hash($value, PASSWORD_DEFAULT);
-
+    $this->surname = $datos["surname"]
+    $this->telefono = $datos["telefono"];
+    $this->mail = $datos["mail"];
+    $this->telefono = $datos["telefono"];
   }
 
-  public function save(){
+  public function guardarImagen() {
+    $nombre=$_FILES["avatar"]["name"];
+    $archivo=$_FILES["avatar"]["tmp_name"];
 
-    $sql = "INSERT INTO usuarios (name,surname,telefono,mail,password) VALUES (?,?,?,?,?)";
-    $stmt = $this->db->prepare($sql);
-    $stmt ->bindValue(":nombre", $this->nombre, PARAM::STR);
-    $stmt ->bindValue(":surname", $this->surname, PARAM::STR);
-    $stmt ->bindValue(":telefono", $this->telefono, PARAM::INT);
-    $stmt ->bindValue(":mail", $this->mail, PARAM::STR);
-    $stmt ->bindValue(":password", $this->password, PARAM::STR);
-    $stmt->execute();
+    $ext = pathinfo($nombre, PATHINFO_EXTENSION);
 
+    $miArchivo = "img/" . $this->getEmail() . "." . $ext;
 
+    move_uploaded_file($archivo, $miArchivo);
   }
-
-
 
     /**
      * Get the value of Name

@@ -2,7 +2,7 @@
 
 include_once("soporte.php");
 require_once("clases/usuario.php");
->>>>>>> bace41c5d14c2b522bdaba81d27ca6895999da41
+
 
 if ($auth->estaLogueado()) {
   header("Location:inicio.php");exit;

@@ -11,20 +11,20 @@ class Validador {
 		}
 
 
-		if (strlen($informacion["name"]) <= 3) {
-			$errores["name"] = "Tenes que poner más de 3 caracteres en tu nombre de usuario";
+		if (strlen($informacion["name"]) >= 2) {
+			$errores["name"] = "Tenes que poner más de 2 caracteres en tu Nombre de usuario";
 		}
 
     if (strlen($informacion["surname"]) <= 3) {
-			$errores["surname"] = "Tenes que poner más de 3 caracteres en tu nombre de usuario";
+			$errores["surname"] = "Tenes que poner más de 3 caracteres en tu Apellido de usuario";
 		}
 
     if (is_numeric($informacion["telefono"]) == false) {
-			$errores["telefono"] = "El telefono debe ser un numero";
+			$errores["telefono"] = "El teléfono debe ser un número";
 		}
 
     if ($informacion["mail"] == "") {
-			$errores["mail"] = "Che, dejaste el mail incompleto";
+			$errores["mail"] = "Dejaste el mail incompleto, debes completarlo";
 		}
 		else if (filter_var($informacion["mail"], FILTER_VALIDATE_EMAIL) == false) {
 			$errores["mail"] = "El mail tiene que ser un mail";
@@ -34,10 +34,6 @@ class Validador {
 
 		if ($informacion["password"] == "") {
 			$errores["password"] = "No llenaste la contraseña";
-		}
-
-		if ($informacion["password"] == "") {
-			$errores["password"] = "No llenaste completar contraseña";
 		}
 
 		if ($_FILES["avatar"]["error"] != UPLOAD_ERR_OK)
@@ -66,7 +62,7 @@ class Validador {
 
 
 		if ($informacion["mail"] == "") {
-			$errores["mail"] = "Che, dejaste el mail incompleto";
+			$errores["mail"] = "Dejaste el mail incompleto, debes completarlo";
 		}
 		else if (filter_var($informacion["mail"], FILTER_VALIDATE_EMAIL) == false) {
 			$errores["mail"] = "El mail tiene que ser un mail";

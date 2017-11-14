@@ -26,15 +26,17 @@ include("header.php"); ?>
 <div class="form">
 <header> <!-- Encabezado logo + menu -->
 
-  <div class="alert alert-danger">
-    <ul class="errores">
-    <?php foreach ($errores as $error) : ?>
-      <li>
-        <?=$error?>
-      </li>
-    <?php endforeach; ?>
-    </ul>
-        </div>
+<?php if (count($errores)>0) { ?>
+                  <div class="alert alert-danger">
+                      <ul class="errores">
+                      <?php foreach ($errores as $error) : ?>
+                        <li>
+                          <?=$error?>
+                        </li>
+                      <?php endforeach; ?>
+                    </ul>
+                </div>
+              <?php } ?>
 
 <form class="form" action="login.php" method="POST">
     <h2 class="login-title">LOGIN</h2>

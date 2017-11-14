@@ -30,6 +30,7 @@
               <li><a href="login.php">LOGIN</a></li>
               <?php if (isset($_SESSION["usuario"])):?>
               <li><a href="#">¡Bienvenido <?php echo $_SESSION["usuario"]; ?>!</a></li>
+              <li> <a href="logout.php">logout</a></li>
             <?php endif?>
             </ul>
           </nav>

@@ -10,8 +10,8 @@ class Auth {
   	}
   }
 
-  public function loguear($email) {
-    $_SESSION["logueado"] = $email;
+  public function loguear($mail) {
+    $_SESSION["logueado"] = $mail;
   }
 
   public function estaLogueado() {
@@ -27,8 +27,8 @@ class Auth {
     }
   }
 
-  public function recordame($email) {
-    setcookie("logueado", $email, time() + 3600 * 2);
+  public function recordame($mail) {
+    setcookie("logueado", $mail, time() + 3600 * 2);
   }
 
   public function logout() {

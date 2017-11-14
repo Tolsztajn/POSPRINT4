@@ -39,7 +39,7 @@ if ($auth->estaLogueado()) {
 			$usuario->guardarImagen($mail);
 			$usuario = $db->guardarUsuario($usuario);
 
-			header("Location:perfilUsuario.php?mail=$mail");exit;
+			header("Location:inicio.php?mail=$mail");exit;
 		}
 	}
 

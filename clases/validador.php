@@ -11,25 +11,24 @@ class Validador {
 		}
 
 
-		if (strlen($informacion["username"]) <= 3) {
-			$errores["username"] = "Tenes que poner más de 3 caracteres en tu nombre de usuario";
+		if (strlen($informacion["name"]) <= 2) {
+			$errores["name"] = "Tenes que poner más de 2 caracteres en tu Nombre de usuario";
 		}
 
-		if ($informacion["edad"] < 18) {
-			$errores["edad"] = "Tenes que tener más de 18 años";
+    if (strlen($informacion["surname"]) <= 3) {
+			$errores["surname"] = "Tenes que poner más de 3 caracteres en tu Apellido de usuario";
 		}
 
-		if (is_numeric($informacion["telefono"]) == false) {
-			$errores["telefono"] = "El telefono debe ser un numero";
+    if (is_numeric($informacion["telefono"]) == false) {
+			$errores["telefono"] = "El teléfono debe ser un número";
 		}
 
-
-		if ($informacion["email"] == "") {
-			$errores["email"] = "Che, dejaste el mail incompleto";
+    if ($informacion["mail"] == "") {
+			$errores["mail"] = "Dejaste el mail incompleto, debes completarlo";
 		}
-		else if (filter_var($informacion["email"], FILTER_VALIDATE_EMAIL) == false) {
+		else if (filter_var($informacion["mail"], FILTER_VALIDATE_EMAIL) == false) {
 			$errores["mail"] = "El mail tiene que ser un mail";
-		} else if ($db->traerPorMail($informacion["email"]) != NULL) {
+		} else if ($db->traerPorMail($informacion["mail"]) != NULL) {
 			$errores["mail"] = "El usuario ya existia!";
 		}
 
@@ -37,15 +36,7 @@ class Validador {
 			$errores["password"] = "No llenaste la contraseña";
 		}
 
-		if ($informacion["cpassword"] == "") {
-			$errores["cpassword"] = "No llenaste completar contraseña";
-		}
-
-		if ($informacion["password"] != "" && $informacion["cpassword"] != "" && $informacion["password"] != $informacion["cpassword"]) {
-			$errores["password"] = "Las contraseñas no coinciden";
-		}
-
-    if ($_FILES["avatar"]["error"] != UPLOAD_ERR_OK)
+		if ($_FILES["avatar"]["error"] != UPLOAD_ERR_OK)
 		{
       $errores["avatar"] = "Hubo un error al cargar la imagen";
     } else {
@@ -70,16 +61,16 @@ class Validador {
 		}
 
 
-		if ($informacion["email"] == "") {
-			$errores["email"] = "Che, dejaste el mail incompleto";
+		if ($informacion["mail"] == "") {
+			$errores["mail"] = "Dejaste el mail incompleto, debes completarlo";
 		}
-		else if (filter_var($informacion["email"], FILTER_VALIDATE_EMAIL) == false) {
+		else if (filter_var($informacion["mail"], FILTER_VALIDATE_EMAIL) == false) {
 			$errores["mail"] = "El mail tiene que ser un mail";
-		} else if ($db->traerPorMail($informacion["email"]) == NULL) {
+		} else if ($db->traerPorMail($informacion["mail"]) == NULL) {
 			$errores["mail"] = "El usuario no esta en nuestra base";
 		}
 
-		$usuario = $db->traerPorMail($informacion["email"]);
+		$usuario = $db->traerPorMail($informacion["mail"]);
 
 		if ($informacion["password"] == "") {
 			$errores["password"] = "No llenaste la contraseña";

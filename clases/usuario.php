@@ -1,88 +1,184 @@
 <?php
 
+
 class Usuario {
   private $id;
-  private $email;
+  private $name;
+  private $surname;
+  private $telefono;
+  private $mail;
   private $password;
-  private $edad;
-  private $pais;
-  private $username;
+  private $db;
 
-  public function __construct($datos) {
-    if (isset($datos["id"])) {
-      $this->id = $datos["id"];
+public function __construct($datos) {
+    if (isset($datos["name"])) {
+      $this->name = $datos["name"];
       $this->password = $datos["password"];
     }
     else {
       $this->password = password_hash($datos["password"], PASSWORD_DEFAULT);
     }
 
-    $this->email = $datos["email"];
-    $this->username = $datos["username"];
-    $this->pais = $datos["pais"];
-    //$this->telefono = $datos["telefono"];
+    $this->surname = $datos["surname"];
+    $this->telefono = $datos["telefono"];
+    $this->mail = $datos["mail"];
+
   }
 
   public function guardarImagen() {
-		$nombre=$_FILES["avatar"]["name"];
-		$archivo=$_FILES["avatar"]["tmp_name"];
+    $nombre=$_FILES["avatar"]["name"];
+    $archivo=$_FILES["avatar"]["tmp_name"];
 
-		$ext = pathinfo($nombre, PATHINFO_EXTENSION);
+    $ext = pathinfo($nombre, PATHINFO_EXTENSION);
 
-		$miArchivo = "img/" . $this->getEmail() . "." . $ext;
+    $miArchivo = "img/" . $this->getMail() . "." . $ext;
 
-		move_uploaded_file($archivo, $miArchivo);
+    move_uploaded_file($archivo, $miArchivo);
   }
 
-  public function setId($id) {
-    $this->id = $id;
-  }
+    /**
+     * Get the value of Name
+     *
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-  public function getId() {
-    return $this->id;
-  }
+    /**
+     * Set the value of Name
+     *
+     * @param mixed name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
 
-  public function setEmail($email) {
-    $this->email = $email;
-  }
+        return $this;
+    }
 
-  public function getEmail() {
-    return $this->email;
-  }
+    /**
+     * Get the value of Surname
+     *
+     * @return mixed
+     */
+    public function getSurname()
+    {
+        return $this->surname;
+    }
 
-  public function setPassword($password) {
-    $this->password = $password;
-  }
+    /**
+     * Set the value of Surname
+     *
+     * @param mixed surname
+     *
+     * @return self
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
 
-  public function getPassword() {
-    return $this->password;
-  }
+        return $this;
+    }
 
-  public function setPais($pais) {
-    $this->pais = $pais;
-  }
+    /**
+     * Get the value of Telefno
+     *
+     * @return mixed
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
 
-  public function getPais() {
-    return $this->pais;
-  }
+    /**
+     * Set the value of Telefno
+     *
+     * @param mixed telefno
+     *
+     * @return self
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
 
-  public function setEdad($edad) {
-    $this->edad = $edad;
-  }
+        return $this;
+    }
 
-  public function getEdad() {
-    return $this->edad;
-  }
+    /**
+     * Get the value of Mail
+     *
+     * @return mixed
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
 
-  public function setUsername($username) {
-    $this->username = $username;
-  }
+    /**
+     * Set the value of Mail
+     *
+     * @param mixed mail
+     *
+     * @return self
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
 
-  public function getUsername() {
-    return $this->username;
-  }
+        return $this;
+    }
 
+    /**
+     * Get the value of Password
+     *
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Get the value of Db
+     *
+     * @return mixed
+     */
+    public function getDb()
+    {
+        return $this->db;
+    }
+
+    /**
+     * Set the value of Db
+     *
+     * @param mixed db
+     *
+     * @return self
+     */
+    public function setDb($db)
+    {
+        $this->db = $db;
+        return $this;
+    }
+
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
 }
 
-?>
+
+
+ ?>

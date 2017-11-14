@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `hoteles_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `hoteles_db`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: hoteles_db
@@ -117,33 +119,30 @@ LOCK TABLES `ubicacion` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `usuario_test`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `usuario_test`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usuario` (
+CREATE TABLE `usuario_test` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `surname` varchar(45) NOT NULL,
   `telefono` int(11) NOT NULL,
   `mail` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `fecha_nacimiento` datetime NOT NULL,
-  `genero` varchar(45) NOT NULL,
-  `id_reserva` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `usuario_test`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `usuario_test` WRITE;
+/*!40000 ALTER TABLE `usuario_test` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuario_test` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -155,4 +154,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-01 15:16:56
+-- Dump completed on 2017-11-14 15:35:52

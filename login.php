@@ -42,7 +42,7 @@ include("header.php"); ?>
     <h2 class="login-title">LOGIN</h2>
     <div class="">
       <label for="" class="login-subtitle">Usuario</label>
-      <input type= "text" class="form-control" placeholder="Usuario" name="usuario">
+      <input type= "text" class="form-control" placeholder="Usuario" name="name">
     </div>
     <div class="">
       <label for="" class="login-subtitle">Email</label>
